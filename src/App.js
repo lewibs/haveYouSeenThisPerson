@@ -4,14 +4,13 @@ import Button from '@mui/material/Button';
 import axios from "axios"
   
 function App() {
-  const [image, setImage] = React.useState({image_url: ""});
+  const [image, setImage] = React.useState({});
   const [next, setNext] = React.useState({});
   const [fname, setFname] = React.useState('');
   const [lname, setLname] = React.useState('');
   const [occupation, setOcupation] = React.useState('');
 
   React.useEffect(() => {
-    newImage();
     newImage();
   }, [])
 
@@ -40,12 +39,20 @@ function App() {
     //https://fakeface.rest/face/json
     setImage(next);
 
-    axios.get('https://fakeface.rest/face/json')
-    .then(res => {setNext(res.data)});
+
+    axios({
+      method: 'get',
+      url: `https://fakeface.rest/face/json`,
+      withCredentials: false,
+    })
+    .then(res => {
+      setNext(res.data)
+    });
   }
 
   function save() {
-    
+    //axios.post('', image);
+    newImage();
   }
 
   return (
@@ -56,7 +63,7 @@ function App() {
       }} >
       <center id="content">
         <div className='inputStuff'>
-          <img src={image.image_url} alt="randomPerson" width="300" height="300"/>
+          <img src={(image.image_url)? image.image_url : "https://raw.githubusercontent.com/lewibs/haveYouSeenThisPerson/main/public/initial.png"} alt="randomPerson" width="280" height="280"/>
           <p>
             they aren't actually a real person. You can make up their info. I am just using the internet to generate a dataset...
           </p>
