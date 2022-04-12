@@ -44,7 +44,7 @@ function App() {
       if(random < 5){
         setImage({
           ...res.data,
-          image_url: "https://raw.githubusercontent.com/lewibs/haveYouSeenThisPerson/frontend/main/public/initial.png"
+          image_url: "https://raw.githubusercontent.com/lewibs/haveYouSeenThisPerson/main/frontend/public/initial.png"
         })
       } else {
         setImage(res.data);
