@@ -34,14 +34,17 @@ function App() {
   function newImage(){
     axios({
       method: 'get',
-      url: `https://fakeface.rest/face/json`,
+      url: `http://localhost:8080/person`,
       withCredentials: false,
     })
     .then(res => {
+      res.data = JSON.parse(res.data);
+      console.log(res.data);
+
       //generate a random number between 0 and 100
       let random = Math.floor(Math.random() * 100);
       //if the random number is 1 then set the image to this link: https://raw.githubusercontent.com/lewibs/haveYouSeenThisPerson/main/public/initial.png
-      if(random < 5){
+      if(random === 1){
         setImage({
           ...res.data,
           image_url: "https://raw.githubusercontent.com/lewibs/haveYouSeenThisPerson/main/frontend/public/initial.png"
@@ -56,6 +59,12 @@ function App() {
     if (fname === "" || lname === "" || occupation === "") {
       alert("Please fill out all fields");
     } else {
+      axios({
+        method: 'post',
+        url: `http://localhost:8080/person`,
+        data: image, 
+      });
+      
       newImage();
     }
   }
