@@ -44,7 +44,7 @@ function App() {
       if(random < 5){
         setImage({
           ...res.data,
-          image_url: "https://raw.githubusercontent.com/lewibs/haveYouSeenThisPerson/main/public/initial.png"
+          image_url: "https://raw.githubusercontent.com/lewibs/haveYouSeenThisPerson/frontend/main/public/initial.png"
         })
       } else {
         setImage(res.data);
@@ -67,7 +67,7 @@ function App() {
         <div className='inputStuff'>
           <img src={image.image_url} alt="randomPerson" width="280" height="280"/>
           <p>
-            they aren't actually a real person. You can make up their info. I am just using the internet to generate a dataset...
+            They aren't a real person. You can make up their info. I am just using the internet to generate a dataset...
           </p>
           <form>
             <div className="input"><TextField label="First Name" onChange={(e)=>{setFname(e.target.value)}} /></div>
