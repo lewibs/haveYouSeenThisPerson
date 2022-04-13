@@ -29,7 +29,7 @@ function App() {
     setFname("");
     setLname("");
     setOcupation("");
-  }, [image]);
+  },[image]);
 
   function newImage(){
     axios({
@@ -79,9 +79,9 @@ function App() {
             They aren't a real person. You can make up their info. I am just using the internet to generate a dataset...
           </p>
           <form>
-            <div className="input"><TextField label="First Name" onChange={(e)=>{setFname(e.target.value)}} /></div>
-            <div className="input"><TextField label="Last Name" onChange={(e)=>{setLname(e.target.value)}} /></div>
-            <div className="input"><TextField  label="Occupation" onChange={(e)=>{setOcupation(e.target.value)}} /></div>
+            <div className="input"><TextField label="First Name" value={fname} onChange={(e)=>{setFname(e.target.value)}} /></div>
+            <div className="input"><TextField label="Last Name" value={lname} onChange={(e)=>{setLname(e.target.value)}} /></div>
+            <div className="input"><TextField  label="Occupation" value={occupation} onChange={(e)=>{setOcupation(e.target.value)}} /></div>
           </form>
         </div>
         <br/>
